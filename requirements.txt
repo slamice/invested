@@ -1,0 +1,4 @@
+Jinja2==2.9.5
+tornado==4.4.2
+motor==1.1
+w3lib==1.17.0
