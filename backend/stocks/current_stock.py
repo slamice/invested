@@ -1,8 +1,7 @@
 from datetime import datetime
 
-from backend import Account
-from backend import StockActivityAudit
-from backend import ROBINHOOD_DAILY_SELL_LIMIT
+from backend.models import Account, StockActivityAudit
+from backend.stocks.constants import ROBINHOOD_DAILY_SELL_LIMIT
 
 
 class CurrentStock:

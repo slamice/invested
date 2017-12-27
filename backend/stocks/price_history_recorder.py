@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from backend import StockPriceHistory
+from backend.models import StockPriceHistory
 
 
 class PriceHistoryRecorder:

@@ -1,8 +1,7 @@
-from backend import Account
-from backend import StockActivityAudit
-from backend import AverageCalculator
-from backend import CurrentStock
-from backend import BUY
+from backend.models import Account, StockActivityAudit, stock
+from backend.stocks.average_calculator import AverageCalculator
+from backend.stocks.current_stock import CurrentStock
+from backend.stocks.types import BUY
 
 
 class Buyer:

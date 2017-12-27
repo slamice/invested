@@ -1,5 +1,6 @@
 from django.db import models
-from other.invested.invested.stocks import ACTIVITY_TYPE
+
+from backend.stocks.types import ACTIVITY_TYPE
 
 
 class StockActivityAudit(models.Model):
