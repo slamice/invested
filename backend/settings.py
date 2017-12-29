@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,17 +79,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('INVESTED_DATABASE_NAME'),
-        'USER': os.environ.get('INVESTED_DATABASE_USERNAME'),
-        'PASSWORD': os.environ.get('INVESTED_PASSWORD'),
-        'HOST': os.environ.get('DATABASE_URL'),
-        'PORT': '5432',
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -129,3 +119,6 @@ USE_TZ = True
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, 'static'),
 # )
+
+DEFAULT_DB = os.environ.get('DATABASE_URL')
+DATABASES['default'] = dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
