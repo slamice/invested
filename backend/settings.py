@@ -122,10 +122,10 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static asset configuration
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# # Static asset configuration
+# STATIC_ROOT = 'staticfiles'
+# STATIC_URL = '/static/'
+#
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
