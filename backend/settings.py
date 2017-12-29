@@ -121,4 +121,6 @@ USE_TZ = True
 # )
 
 DEFAULT_DB = os.environ.get('DATABASE_URL')
-DATABASES['default'] = dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
+DATABASES = {
+    'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
+}
