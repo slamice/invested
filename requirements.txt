@@ -11,3 +11,4 @@ six==1.11.0
 urllib3==1.22
 schedule==0.5.0
 gunicorn==19.7.1
+APScheduler==3.5.0

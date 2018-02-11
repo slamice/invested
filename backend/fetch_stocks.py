@@ -1,13 +1,16 @@
 import os
 
 from Robinhood import Robinhood
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 from backend.models import Stock, StockPriceHistory
 from backend.stocks.robinhood_stock import RobinHoodStock
 
+sched = BlockingScheduler()
 
+
+@sched.scheduled_job('cron', day_of_week='mon-fri', hour='8-20', minute='*/5')
 def fetch_stocks():
-    import pdb; pdb.set_trace()
     robinhood_username = os.environ.get('ROBINHOOD_USERNAME')
     robinhood_password = os.environ.get('ROBINHOOD_PASSWORD')
     trader = Robinhood()
@@ -22,3 +25,5 @@ def fetch_stocks():
         quote = RobinHoodStock(last_trade=trader.quote_data(stock.code))
         print('{} {}'.format(quote.code, quote.buying_price))
         StockPriceHistory.objects.create(stock=stock, price=quote.buying_price)
+
+sched.start()
