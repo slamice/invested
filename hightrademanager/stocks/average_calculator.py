@@ -1,8 +1,8 @@
 from statistics import mean
 
-from backend.models import StockPriceHistory
-from backend.stocks.constants import STOCK_RECORDS_FOR_AVERAGE
-from backend.stocks.current_stock import CurrentStock
+from hightrademanager.hightrademanager import StockPriceHistory
+from hightrademanager.hightrademanager import STOCK_RECORDS_FOR_AVERAGE
+from hightrademanager.hightrademanager import CurrentStock
 
 
 class AverageCalculator:

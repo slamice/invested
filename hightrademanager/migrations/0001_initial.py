@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('activity', models.CharField(choices=[('buy', 'buy'), ('sell', 'sell')], default=None, max_length=50, null=True)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('stock', models.ForeignKey(on_delete=True, to='backend.Stock')),
+                ('stock', models.ForeignKey(on_delete=True, to='hightrademanager.Stock')),
             ],
         ),
         migrations.CreateModel(
@@ -49,7 +49,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('price', models.DecimalField(decimal_places=2, max_digits=10)),
                 ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('stock', models.ForeignKey(on_delete=True, to='backend.Stock')),
+                ('stock', models.ForeignKey(on_delete=True, to='hightrademanager.Stock')),
             ],
         ),
     ]

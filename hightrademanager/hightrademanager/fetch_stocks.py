@@ -3,8 +3,8 @@ import os
 from Robinhood import Robinhood
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-from backend.models import Stock, StockPriceHistory
-from backend.stocks.robinhood_stock import RobinHoodStock
+from hightrademanager.models import Stock, StockPriceHistory
+from hightrademanager.stocks.robinhood_stock import RobinHoodStock
 
 sched = BlockingScheduler()
 

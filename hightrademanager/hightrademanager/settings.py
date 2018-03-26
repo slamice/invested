@@ -13,9 +13,16 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import dj_database_url
 
+import django
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from os import path
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+PROJECT_ROOT = SITE_ROOT
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -32,7 +39,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'backend',
-    'backend.fetch_stocks'
+    'hightrademanager',
+#    'hightrademanager.hightrademanager.fetch_stocks'
 ]
 
 MIDDLEWARE = [
@@ -56,7 +62,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'backend.urls'
+django.setup()
+
+ROOT_URLCONF = 'hightrademanager.hightrademanager.urls'
 
 TEMPLATES = [
     {
@@ -74,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'backend.wsgi.application'
+WSGI_APPLICATION = 'hightrademanager.hightrademanager.wsgi.application'
 
 
 # Database
@@ -112,6 +120,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT =path.join(PROJECT_ROOT, '/static/')
+STATIC_URL =path.join(PROJECT_ROOT, '/static/')
 
 # # Static asset configuration
 # STATIC_ROOT = 'staticfiles'

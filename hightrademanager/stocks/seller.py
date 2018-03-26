@@ -1,7 +1,7 @@
-from backend.models import Account, StockActivityAudit
-from backend.stocks.average_calculator import AverageCalculator
-from backend.stocks.current_stock import CurrentStock
-from backend.stocks.types import SELL
+from hightrademanager.hightrademanager import Account, StockActivityAudit
+from hightrademanager.hightrademanager import AverageCalculator
+from hightrademanager.hightrademanager import CurrentStock
+from hightrademanager.hightrademanager import SELL
 
 
 class Seller:

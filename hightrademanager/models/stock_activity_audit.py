@@ -1,6 +1,6 @@
 from django.db import models
 
-from backend.stocks.types import ACTIVITY_TYPE
+from hightrademanager.stocks.types import ACTIVITY_TYPE
 
 
 class StockActivityAudit(models.Model):

@@ -1,6 +1,6 @@
 from django.db import models
 
-from backend.stocks.types import VOLATILITY_TYPES
+from hightrademanager.stocks.types import VOLATILITY_TYPES
 
 
 class Stock(models.Model):
