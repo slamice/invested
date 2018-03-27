@@ -7,7 +7,6 @@ from hightrademanager.hightrademanager.fetch_stocks import fetch_stocks
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        import pdb; pdb.set_trace()
         try:
             scheduler = BackgroundScheduler()
             scheduler.add_job(fetch_stocks,

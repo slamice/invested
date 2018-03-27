@@ -62,8 +62,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-django.setup()
-
 ROOT_URLCONF = 'hightrademanager.hightrademanager.urls'
 
 TEMPLATES = [
@@ -123,15 +121,9 @@ USE_TZ = True
 STATIC_ROOT =path.join(PROJECT_ROOT, '/static/')
 STATIC_URL =path.join(PROJECT_ROOT, '/static/')
 
-# # Static asset configuration
-# STATIC_ROOT = 'staticfiles'
-# STATIC_URL = '/static/'
-#
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-
 DEFAULT_DB = os.environ.get('DATABASE_URL')
 DATABASES = {
     'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
 }
+
+django.setup()
