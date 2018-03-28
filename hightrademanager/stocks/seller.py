@@ -1,7 +1,7 @@
-from hightrademanager.hightrademanager import Account, StockActivityAudit
-from hightrademanager.hightrademanager import AverageCalculator
-from hightrademanager.hightrademanager import CurrentStock
-from hightrademanager.hightrademanager import SELL
+from hightrademanager.models import Account, StockActivityAudit
+from hightrademanager.stocks.average_calculator import AverageCalculator
+from hightrademanager.stocks.current_stock import CurrentStock
+from hightrademanager.stocks.types import SELL
 
 
 class Seller:

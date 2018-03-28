@@ -18,6 +18,7 @@ def fetch_stocks():
     logged_in = trader.login(username=robinhood_username,
                              password=robinhood_password)
 
+    import pdb; pdb.set_trace()
     # Grab stocks from database
     stocks = Stock.objects.all()
     print(stocks)
@@ -25,5 +26,3 @@ def fetch_stocks():
         quote = RobinHoodStock(last_trade=trader.quote_data(stock.code))
         print('{} {}'.format(quote.code, quote.buying_price))
         StockPriceHistory.objects.create(stock=stock, price=quote.buying_price)
-
-sched.start()

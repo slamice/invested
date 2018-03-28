@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'hightrademanager',
-#    'hightrademanager.hightrademanager.fetch_stocks'
 ]
 
 MIDDLEWARE = [

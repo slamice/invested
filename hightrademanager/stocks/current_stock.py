@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from hightrademanager.hightrademanager import Account, StockActivityAudit
-from hightrademanager.hightrademanager import ROBINHOOD_DAILY_SELL_LIMIT
+from hightrademanager.models import Account, StockActivityAudit
+from hightrademanager.stocks.constants import ROBINHOOD_DAILY_SELL_LIMIT
 
 
 class CurrentStock:

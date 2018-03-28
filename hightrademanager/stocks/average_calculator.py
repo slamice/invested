@@ -1,8 +1,8 @@
 from statistics import mean
 
-from hightrademanager.hightrademanager import StockPriceHistory
-from hightrademanager.hightrademanager import STOCK_RECORDS_FOR_AVERAGE
-from hightrademanager.hightrademanager import CurrentStock
+from hightrademanager.models import StockPriceHistory
+from hightrademanager.stocks.constants import STOCK_RECORDS_FOR_AVERAGE
+from hightrademanager.stocks.current_stock import CurrentStock
 
 
 class AverageCalculator:
@@ -12,6 +12,7 @@ class AverageCalculator:
         self.difference = difference
         self.current_stock = current_stock
 
+    @staticmethod
     def create(current_stock: CurrentStock):
         prices = StockPriceHistory.objects\
             .filter(stock__code=current_stock.code)\
