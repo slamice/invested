@@ -17,8 +17,6 @@ def fetch_stocks():
 
     logged_in = trader.login(username=robinhood_username,
                              password=robinhood_password)
-
-    import pdb; pdb.set_trace()
     # Grab stocks from database
     stocks = Stock.objects.all()
     print(stocks)
