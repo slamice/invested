@@ -6,7 +6,7 @@ from hightrademanager.robinhood.robinhood_api import RobinhoodAPI
 sched = BlockingScheduler()
 
 
-@sched.scheduled_job('cron', minute='*/5')
+#@sched.scheduled_job('cron', minute='*/5',day_of_week='mon-fri')
 def fetch_stocks():
     robinhood_api = RobinhoodAPI()
 
