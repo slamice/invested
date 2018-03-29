@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hightrademanager.hightrademanager.urls'
+ROOT_URLCONF = 'hightrademanager.urls'
 
 TEMPLATES = [
     {

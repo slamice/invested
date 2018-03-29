@@ -119,7 +119,7 @@ DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
 # File: ./backend/pytest.ini
 
 [pytest]
-DJANGO_SETTINGS_MODULE = backend.test_settings
+DJANGO_SETTINGS_MODULE = hightrademanager.test_settings
 ```
 
 ```config
