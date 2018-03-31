@@ -42,13 +42,13 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'trademanager',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'hightrademanager',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hightrademanager.urls'
+ROOT_URLCONF = 'trademanager.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hightrademanager.hightrademanager.wsgi.application'
+WSGI_APPLICATION = 'trademanager.wsgi.application'
 
 
 # Database
@@ -117,12 +117,73 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_ROOT =path.join(PROJECT_ROOT, '/static/')
-STATIC_URL =path.join(PROJECT_ROOT, '/static/')
+STATIC_ROOT = path.join(PROJECT_ROOT, '/static/')
+STATIC_URL = path.join(PROJECT_ROOT, '/static/')
 
 DEFAULT_DB = os.environ.get('DATABASE_URL')
 DATABASES = {
     'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
 }
 
-django.setup()
+LOGS_ROOT = path.join(PROJECT_ROOT, 'trademanager/logs/')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'level': 'ERROR',
+        'handlers': ['error_to_console']
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s',
+            'datefmt': '%Y-%m-%dT%H:%M:%S%z'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'error_to_console': {
+            'level': 'EXCEPTION',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+        },
+        'error_to_console': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+        },
+        'debug_to_console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'event_to_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_ROOT + 'invested.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['debug_to_console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.template': {
+            'handlers': ['debug_to_console'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+    },
+}
+
+# django.setup()

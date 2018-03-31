@@ -1,15 +1,15 @@
 from statistics import mean
 
-from hightrademanager.models import StockPriceHistory
-from hightrademanager.stocks.constants import STOCK_RECORDS_FOR_AVERAGE
-from hightrademanager.stocks.current_stock import CurrentStock
+from trademanager.models import StockPriceHistory
+from trademanager.stocks.constants import STOCK_RECORDS_FOR_AVERAGE
+from trademanager.stocks.current_stock import CurrentStock
 
 
 class AverageCalculator:
-    def __init__(self, current_stock: CurrentStock, min_price: float, average: float, difference: float):
+    def __init__(self, current_stock: CurrentStock, min_price: float, average: float):
         self.min_price = min_price
         self.average = average
-        self.difference = difference
+        self.difference = average - min_price
         self.current_stock = current_stock
 
     @staticmethod
@@ -19,10 +19,8 @@ class AverageCalculator:
             .order_by('-created_at').values('price', flat=True)[STOCK_RECORDS_FOR_AVERAGE]
         min_price = min(prices)
         average = mean(prices)
-        difference = average - min_price
         return AverageCalculator(min_price=min_price,
                                  average=average,
-                                 difference=difference,
                                  current_stock=current_stock)
 
     def has_average_volatility_or_higher(self):

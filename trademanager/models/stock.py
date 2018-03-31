@@ -1,6 +1,6 @@
 from django.db import models
 
-from hightrademanager.stocks.types import VOLATILITY_TYPES
+from trademanager.stocks.types import VOLATILITY_TYPES
 
 
 class Stock(models.Model):
@@ -8,3 +8,10 @@ class Stock(models.Model):
     name = models.CharField(max_length=100)
     volatility = models.CharField(default=None, null=True, max_length=50, choices=VOLATILITY_TYPES)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    def __str__(self):
+        return '{} {} {}'.format(self.pk, self.code, self.name)
+
+
+    class Meta:
+        db_table = 'stock'

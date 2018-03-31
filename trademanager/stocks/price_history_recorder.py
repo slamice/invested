@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from hightrademanager.models import StockPriceHistory
+from trademanager.models import StockPriceHistory
 
 
 class PriceHistoryRecorder:
