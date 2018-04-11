@@ -13,21 +13,23 @@ class AverageCalculator:
         self.current_stock = current_stock
 
     @staticmethod
-    def create(current_stock: CurrentStock):
-        prices = StockPriceHistory.objects\
+    def get_last_stock_prices(current_stock):
+        return StockPriceHistory.objects\
             .filter(stock__code=current_stock.code)\
             .order_by('-created_at').values('price', flat=True)[STOCK_RECORDS_FOR_AVERAGE]
-        min_price = min(prices)
-        average = mean(prices)
-        return AverageCalculator(min_price=min_price,
-                                 average=average,
+
+    @staticmethod
+    def create(current_stock: CurrentStock):
+        prices = AverageCalculator.get_last_stock_prices(current_stock)
+        return AverageCalculator(min_price=min(prices),
+                                 average=mean(prices),
                                  current_stock=current_stock)
 
     def has_average_volatility_or_higher(self):
         """
         :return: True if current_stock has greater than the average price, else False
         """
-        return self.current_stock.price > self.min_price + self.difference
+        return self.current_stock > self.min_price + self.difference
 
     def has_average_volatility_or_lower(self):
-        return self.current_stock.price < self.min_price - self.difference
+        return self.current_stock < self.min_price - self.difference

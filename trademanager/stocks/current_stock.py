@@ -15,3 +15,5 @@ class CurrentStock:
     def is_still_sellable_today(self):
         return StockActivityAudit.objects.get(created_at=datetime.today(),
                                               stock=self).count() < ROBINHOOD_DAILY_SELL_LIMIT
+    def __lt__(self, other):
+        return self.price < other

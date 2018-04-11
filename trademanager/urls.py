@@ -21,6 +21,3 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
-
-from trademanager.stocks.fetch_stocks import FetchStockManager
-FetchStockManager().start_job()
