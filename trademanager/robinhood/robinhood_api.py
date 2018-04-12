@@ -19,4 +19,9 @@ class RobinhoodAPI:
         logger.info("logged in to Robinhood.")
 
     def get_stock_quote(self, stock: Stock) -> RobinHoodStock:
-        return RobinHoodStock(last_trade=self._api.quote_data(stock.code))
+        robinhood_stock = None
+        try:
+            robinhood_stock = RobinHoodStock(last_trade=self._api.quote_data(stock.code))
+        except Exception as e:
+            logger.info("Error while fetching quote: {}".format(e))
+        return robinhood_stock
