@@ -151,6 +151,11 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
         },
+        'error_to_console': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+        },
         'debug_to_console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
