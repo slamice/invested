@@ -7,7 +7,7 @@ from trademanager.robinhood.robinhood_api import RobinhoodAPI
 
 sched = BlockingScheduler()
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("invested_logs")
 
 
 class FetchStockManager:
@@ -20,8 +20,8 @@ class FetchStockManager:
 
         for stock in stocks:
             quote = robinhood_api.get_stock_quote(stock=stock)
-            logger.debug('{} {}'.format(quote.code, quote.buying_price))
+            logger.info('{} {}'.format(quote.code, quote.buying_price))
             try:
                 StockPriceHistory.objects.create(stock=stock, price=quote.buying_price)
             except Exception as e:
-                logger.debug('Major error going on here during adding stock history... {}'.format(e))
+                logger.info('Major error going on here during adding stock history... {}'.format(e))

@@ -173,6 +173,11 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
+        'invested_logs': {
+            'handlers': ['debug_to_console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
         'django.template': {
             'handlers': ['debug_to_console'],
             'level': 'INFO',

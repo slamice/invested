@@ -6,7 +6,7 @@ from Robinhood import Robinhood
 from trademanager.models import Stock
 from trademanager.stocks.robinhood_stock import RobinHoodStock
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("invested_logs")
 
 
 class RobinhoodAPI:
