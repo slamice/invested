@@ -20,8 +20,8 @@ class FetchStockManager:
 
         for stock in stocks:
             quote = robinhood_api.get_stock_quote(stock=stock)
-            logger.info('{} {}'.format(quote.code, quote.buying_price))
+            logger.debug('{} {}'.format(quote.code, quote.buying_price))
             try:
                 StockPriceHistory.objects.create(stock=stock, price=quote.buying_price)
             except Exception as e:
-                logger.error('Major error going on here during adding stock history... {}'.format(e))
+                logger.debug('Major error going on here during adding stock history... {}'.format(e))
