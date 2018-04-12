@@ -122,7 +122,7 @@ STATIC_URL = path.join(PROJECT_ROOT, '/static/')
 
 DEFAULT_DB = os.environ.get('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=1200)
+    'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
 }
 
 LOGS_ROOT = path.join(PROJECT_ROOT, 'trademanager/logs/')
@@ -147,7 +147,7 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose'
         },
@@ -157,7 +157,7 @@ LOGGING = {
             'class': 'logging.StreamHandler',
         },
         'debug_to_console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
@@ -170,7 +170,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['debug_to_console'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
         'django.template': {
