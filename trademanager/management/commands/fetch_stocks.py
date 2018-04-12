@@ -13,5 +13,5 @@ class Command(BaseCommand):
             fetch_stock_manager.fetch()
 
         #sched.add_job(fetch_stock, 'cron', day_of_week='mon-fri', hour='8-20', minute='*/5')
-        sched.add_job(fetch_stock, 'cron', day_of_week='mon-sun', minute='*/5')
+        sched.add_job(fetch_stock, 'cron', day_of_week='mon-sun', minute='*/1')
         sched.start()

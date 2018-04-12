@@ -122,7 +122,7 @@ STATIC_URL = path.join(PROJECT_ROOT, '/static/')
 
 DEFAULT_DB = os.environ.get('DATABASE_URL')
 DATABASES = {
-    'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=600)
+    'default': dj_database_url.parse(DEFAULT_DB, conn_max_age=1200)
 }
 
 LOGS_ROOT = path.join(PROJECT_ROOT, 'trademanager/logs/')
