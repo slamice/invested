@@ -25,3 +25,6 @@ class RobinHoodStock:
     @property
     def buying_price(self):
         return float(self.raw_stock_info.get('bid_price'))
+
+    def __str__(self):
+        return '{} {}'.format(self.code, self.buying_price)

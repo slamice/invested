@@ -19,8 +19,9 @@ class FetchStockManager:
         logger.info("Stocks available: {}".format(stocks))
 
         for stock in stocks:
+            logger.info('About to fetch stock from Robinhood: {}'.format(stock))
             quote = robinhood_api.get_stock_quote(stock=stock)
-            logger.info('{} {}'.format(quote.code, quote.buying_price))
+            logger.info('Fetched quote from robinhood: {}'.format(quote))
             try:
                 StockPriceHistory.objects.create(stock=stock, price=quote.buying_price)
             except Exception as e:

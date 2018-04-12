@@ -9,9 +9,8 @@ class Stock(models.Model):
     volatility = models.CharField(default=None, null=True, max_length=50, choices=VOLATILITY_TYPES)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
 
-    def __str__(self):
+    def __repr__(self):
         return '{} {} {}'.format(self.pk, self.code, self.name)
-
 
     class Meta:
         db_table = 'stock'
